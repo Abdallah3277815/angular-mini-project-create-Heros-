@@ -1,0 +1,32 @@
+<div class=" container">
+    <h1 class="text-center">Hero Cards</h1>
+    <div class=" row g-4 my-5 ">
+        <div class="col-3">
+            <input [(ngModel)]="hero.name" class="form-control" type="text" placeholder="Hero Name">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="hero.power" class="form-control" type="text" placeholder="Hero Power">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="hero.img" class="form-control" type="text" placeholder="Hero Img Url">
+        </div>
+        <div class="col-3">
+            <button (click)="createHero()" class="btn btn-danger w-100">Create</button>
+        </div>
+    </div>
+    <div class="row my-5 ">
+        <div [class]="herosArr.length > 0 ? 'd-none':'d-block alert alert-danger text-center'"  *ngIf="hero.name == '' && hero.power==0 && hero.img == ''">Please Enter a Hero Name and Power and Img Url</div>
+        <div class="col-3" *ngFor="let hero of herosArr">
+            <div [class]="{'hero':true,'p-3':true,'h-100':true,'text-light':true,'low':hero.power <=50 , 'meduim':hero.power >50 && hero.power<80 ,'high':hero.power>=80 }">
+                <div class="hero-img">
+                    <img class="w-100" [src]="hero.img" alt="">
+                </div>
+                <div class="details">
+                    <h3>{{hero.name}}</h3>
+                    <h4>{{hero.power}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
